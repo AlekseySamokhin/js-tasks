@@ -58,7 +58,7 @@ const cars = {
     },
 }
 
-function createObj(arr) {
+function createObj(arr, obj) {
     const cloneArr = JSON.parse(JSON.stringify(arr));
 
     const objCars = {};
@@ -71,8 +71,8 @@ function createObj(arr) {
         let {cars: arrBrands} = objCars[prop];
 
         for (let i = 0; i < arrBrands.length; i++) {
-            for (let brand in cars) {
-                const {id, title} = cars[brand];
+            for (let brand in obj) {
+                const {id, title} = obj[brand];
 
                 if (arrBrands[i] === title) {
                     arrBrands[i] = id;
@@ -84,7 +84,7 @@ function createObj(arr) {
     return objCars;
 }
 
-const formatedUsers = createObj(users);
+const formatedUsers = createObj(users, cars);
 
 console.log(formatedUsers);
 console.log(users[0].cars); // ['audi', 'bmw', 'porshe']
